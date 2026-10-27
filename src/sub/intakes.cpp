@@ -16,3 +16,13 @@ void Intake::intake(int state) {
     intakes.move_velocity(0);      // stop
   }
 }
+
+void Intake::run() {
+  if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    intake(0);
+  } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+    intake(1);
+  } else {
+    intake(2);
+  }
+}

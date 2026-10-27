@@ -64,6 +64,7 @@ void initialize() {
     chassis.calibrate(); // Calibrate sensors
     chassis.setPose(0,0,0);
 
+    cascadeMotors.set_brake_mode_all(pros::MotorBrake::hold);
     
 
 //     selector.on_select([](std::optional<rd::Selector::routine_t> routine) {
@@ -188,27 +189,31 @@ void opcontrol() {
         // move the robot
         chassis.arcade(-leftY, -rightX);
 
-            //cascade
-        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-          //cascade up
-          subsystem.cascades.move(1);
-        }
+        //cascade
+        subsystem.cascades.run();
+        subsystem.intake.run();
+        pros::delay(10);
 
-        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
-          //cascade down
-          subsystem.cascades.move(2);
-        }
+            //cascade
+        // if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+        //   //cascade up
+        //   subsystem.cascades.move(1);
+        // }
+
+        // if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
+        //   //cascade down
+        //   subsystem.cascades.move(2);
+        // }
 
           //front intakes
-        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
-          //intake spin + unclamp
-          subsystem.intake.intake(0);
-          
-        }
-        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
-          //outake (intake opp)
-          subsystem.intake.intake(1);
-        }
+        // if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+        //   //intake spin + unclamp
+        //   subsystem.intake.intake(0);
+        // }
+        // if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
+        //   //outake (intake opp)
+        //   subsystem.intake.intake(1);
+        // }
 
           //figure out rotational intake for scoring mech 
           

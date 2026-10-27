@@ -43,7 +43,7 @@ namespace Robot {
     pros::MotorGroup left({5, 4, 6},pros::MotorGearset::blue);
     pros::MotorGroup cascadeMotors({20,-19}, pros::MotorGearset::blue);
 
-    pros::Motor intakes({8},pros::MotorGearset::blue);
+    pros::Motor intakes({18},pros::MotorGearset::blue);
 
     // Rotational
     // pros:: rotational 
